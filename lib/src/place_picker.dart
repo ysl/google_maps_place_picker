@@ -61,6 +61,8 @@ class PlacePicker extends StatefulWidget {
     this.automaticallyImplyAppBarLeading = true,
     this.autocompleteOnTrailingWhitespace = false,
     this.hidePlaceDetailsWhenDraggingPin = true,
+    this.markers,
+    this.circles,
   }) : super(key: key);
 
   final String apiKey;
@@ -165,6 +167,9 @@ class PlacePicker extends StatefulWidget {
   final bool autocompleteOnTrailingWhitespace;
 
   final bool hidePlaceDetailsWhenDraggingPin;
+
+  final Set<Marker>? markers;
+  final Set<Circle>? circles;
 
   @override
   _PlacePickerState createState() => _PlacePickerState();
@@ -423,6 +428,8 @@ class _PlacePickerState extends State<PlacePicker> {
         searchBarController.reset();
       },
       onPlacePicked: widget.onPlacePicked,
+      markers: widget.markers,
+      circles: widget.circles,
     );
   }
 }

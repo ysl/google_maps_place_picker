@@ -55,6 +55,30 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   PickResult selectedPlace;
+  Set<Marker> markers = {};
+  Set<Circle> circles = {};
+
+  void downloadMarkers() async {
+    // Simulate downloading by sleeping 2 seconds.
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {
+      markers = {
+        Marker(
+          markerId: MarkerId("marker_1"),
+          position: LatLng(25.061203992223767, 121.51098531087428),
+        ),
+      };
+      circles = {
+        Circle(
+          circleId: CircleId('circle_1'),
+          fillColor: Color.fromARGB(50, 255, 0, 0),
+          center: LatLng(25.061203992223767, 121.51098531087428),
+          radius: 100,
+          strokeColor: Colors.white,
+        ),
+      };
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +93,8 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               ElevatedButton(
                 child: Text("Load Google Map"),
-                onPressed: () {
+                onPressed: () async {
+                  await downloadMarkers();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -121,6 +146,8 @@ class _HomePageState extends State<HomePage> {
                           //     return Icon(Icons.favorite);
                           //   }
                           // },
+                          markers: markers,
+                          circles: circles,
                         );
                       },
                     ),
