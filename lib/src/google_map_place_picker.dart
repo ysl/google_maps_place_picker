@@ -31,7 +31,8 @@ typedef PinBuilder = Widget Function(
 class GoogleMapPlacePicker extends StatelessWidget {
   const GoogleMapPlacePicker({
     Key? key,
-    required this.initialTarget,
+    // required this.initialTarget,
+    required this.initialCameraPosition,
     required this.appBarKey,
     this.selectedPlaceWidgetBuilder,
     this.pinBuilder,
@@ -54,7 +55,8 @@ class GoogleMapPlacePicker extends StatelessWidget {
     this.circles,
   }) : super(key: key);
 
-  final LatLng initialTarget;
+  // final LatLng initialTarget;
+  final CameraPosition initialCameraPosition;
   final GlobalKey appBarKey;
 
   final SelectedPlaceWidgetBuilder? selectedPlaceWidgetBuilder;
@@ -149,7 +151,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
         selector: (_, provider) => provider.mapType,
         builder: (_, data, __) {
           PlaceProvider provider = PlaceProvider.of(context, listen: false);
-          CameraPosition initialCameraPosition = CameraPosition(target: initialTarget, zoom: 15);
+          //CameraPosition initialCameraPosition = CameraPosition(target: initialTarget, zoom: 15);
 
           return GoogleMap(
             myLocationButtonEnabled: false,
