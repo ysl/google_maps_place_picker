@@ -381,8 +381,9 @@ class _PlacePickerState extends State<PlacePicker> {
               } else {
                 // return _buildMap(LatLng(provider!.currentPosition!.latitude,provider!.currentPosition!.longitude));
                 return _buildMap(CameraPosition(
-                  target: LatLng(provider!.currentPosition!.latitude, provider!.currentPosition!.longitude),
-                  zoom: 7.5,
+                  target: LatLng(provider!.currentPosition!.latitude,
+                      provider!.currentPosition!.longitude),
+                  zoom: 13,
                 ));
               }
             }
